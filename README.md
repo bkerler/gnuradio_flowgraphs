@@ -7,3 +7,9 @@ Intended for training and self-education.
 ## Installation / usage
 
 See [here](https://github.com/bkerler/gnuradio_install) for details on gnuradio install + oots
+
+## Useful resources / links
+
+[Sigidwiki](https://www.sigidwiki.com/wiki/Signal_Identification_Guide)
+
+[pysdr](https://pysdr.org/)
