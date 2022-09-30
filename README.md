@@ -1,2 +1,9 @@
-# gnuradio_tutorial
-Some example flowgraphs for gnuradio, mostly based on real-world signals, some from grcon22 ctf
+# Gnuradio Flowgraph collection (demod + mod)
+by B.Kerler
+
+Some example flowgraphs for gnuradio 3.10/3.11, tested against real-world signals (including iq data), some from grcon22 ctf.
+Intended for training and self-education.
+
+## Installation / usage
+
+See [here](https://github.com/bkerler/gnuradio_install) for details on gnuradio install + oots
