@@ -339,7 +339,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    k: '2'
+    k: 8//4
     maxoutbuf: '0'
     minoutbuf: '0'
   states:
