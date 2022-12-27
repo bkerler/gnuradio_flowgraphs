@@ -641,7 +641,7 @@ blocks:
       Order = 4 for QPSK, 2 for BPSK, 8 for 8PSK'
     maxoutbuf: '0'
     minoutbuf: '0'
-    order: '4'
+    order: '2'
     use_snr: 'False'
     w: 2*pi/100
   states:
@@ -660,7 +660,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    modulus: '4'
+    modulus: '2'
   states:
     bus_sink: false
     bus_source: false
