@@ -1,29 +1,25 @@
 options:
   parameters:
+    alias: ''
     author: B. Kerler / seraj
     catch_exceptions: 'True'
-    category: '[GRC Hier Blocks]'
-    cmake_opt: ''
     comment: ''
     copyright: '2022'
     description: ''
-    gen_cmake: 'On'
     gen_linking: dynamic
     generate_options: qt_gui
+    generator_class_name: PythonQtGuiGenerator
+    generator_module: gnuradio.grc.workflows.python_qt_gui
     hier_block_src_path: '.:'
     id: signal_detector
     max_nouts: '0'
     output_language: python
-    placement: (0,0)
     qt_qss_theme: ''
     realtime_scheduling: ''
     run: 'True'
     run_command: '{python} -u {filename}'
-    run_options: prompt
-    sizing_mode: fixed
     thread_safe_setters: ''
     title: Signal detector
-    window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
@@ -105,6 +101,7 @@ blocks:
   id: variable_qtgui_entry
   parameters:
     comment: ''
+    entry_signal: editingFinished
     gui_hint: 3,0,1,1
     label: Frequency
     type: real
@@ -152,9 +149,7 @@ blocks:
     label: Gain
     min_len: '200'
     orient: QtCore.Qt.Horizontal
-    outputmsgname: value
     rangeType: int
-    showports: 'False'
     start: '0'
     step: '1'
     stop: '49'
@@ -211,9 +206,7 @@ blocks:
     label: threshold
     min_len: '200'
     orient: QtCore.Qt.Horizontal
-    outputmsgname: value
     rangeType: int
-    showports: 'False'
     start: '-100'
     step: '1'
     stop: '0'
@@ -418,7 +411,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [508.0, 368]
+    coordinate: [496.0, 384]
     rotation: 90
     state: enabled
 - name: epy_module_0
@@ -427,7 +420,7 @@ blocks:
     alias: ''
     comment: ''
     source_code: "# this module will be imported in the into your flowgraph\nimport\
-      \ numpy as np\nfrom gnuradio.qtgui import GrRangeWidget\n\ndef avg_freq_pwr(data):\n\
+      \ numpy as np\nfrom gnuradio.qtgui.range import Range\n\n\ndef avg_freq_pwr(data):\n\
       \tweighted_power = 0\n\tsum_power = 0\n\tfor index, samples in enumerate(data):\n\
       \t\tweighted_power += index * float(samples)\n\t\tsum_power += float(samples)\n\
       \tif len(data) <=0: \n\t\treturn 0,0\n\telse:\n\t\treturn weighted_power/float(sum_power)\n\
@@ -438,8 +431,8 @@ blocks:
       \t\t\tchannels.append(index-len(bins)+avg_freq)\n\t\t\tlnbins.append(len(bins))\n\
       \t\t\tindex += 1\n\t\t\tbins = []\n\t\telse:\n\t\t\tindex += 1\n\treturn channels,lnbins\n\
       \nchannels = []\nlnbin = []\nret = [0,0]\nchannel_spacing = 0.0005\n\ndef detect(data,fs,thr,freq):\n\
-      \tglobal channels,lnbin,ret,channel_spacing\n\tif isinstance(thr,GrRangeWidget):\n\
-      \t\t# This fixes a weird qt range bug\n  \t\tthr = int(-70)\n\ttry:\n\t\tspectrum\
+      \tglobal channels,lnbin,ret,channel_spacing\n\tif isinstance(thr,Range):\n\t\
+      \t# This fixes a weird qt range bug\n  \t\tthr = int(-70)\n\ttry:\n\t\tspectrum\
       \ = list(data)\n\t\tspectrum = np.array([float(x) for x in spectrum])\n\t\t\
       channels,lnbin = np.array(estimate(spectrum,thr))\n\t\t#print(channels,lnbin)\n\
       \t\tif len(channels) > 0:\n\t\t\tresolution = fs/len(spectrum)\n\t\t\tchannels\
@@ -1022,4 +1015,4 @@ connections:
 
 metadata:
   file_format: 1
-  grc_version: v3.11.0.0git-215-g9a698313
+  grc_version: v3.11.0.0git-949-gbf7f9fff
